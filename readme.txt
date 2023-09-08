@@ -1,1 +1,0 @@
-Code lại bài shoe shop trên lớp
