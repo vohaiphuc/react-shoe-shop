@@ -1,3 +1,6 @@
+export let PAGE_HOME = "home"
+export let PAGE_CART = "cart"
+
 export let shoeArr = [
   {
     "id": 1,

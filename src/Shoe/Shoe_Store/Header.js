@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { PAGE_CART, PAGE_HOME } from './data'
 
 export default class Header extends Component {
+    setActivePageClass = (page) => {
+        return this.props.activePage == page ? "nav-item active" : "nav-item"
+    }
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -10,11 +14,11 @@ export default class Header extends Component {
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#" onClick={() => { this.props.changePage("home") }}><i class="fa fa-home mr-2"></i>Home</a>
+                        <li className={this.setActivePageClass(PAGE_HOME)} >
+                            <a className="nav-link" href="#" onClick={() => { this.props.changePage(PAGE_HOME) }}><i class="fa fa-home mr-2"></i>Home</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#" onClick={() => { this.props.changePage("cart") }}><i class="fa fa-shopping-cart mr-2"></i>Cart</a>
+                        <li className={this.setActivePageClass(PAGE_CART)} >
+                            <a className="nav-link" href="#" onClick={() => { this.props.changePage(PAGE_CART) }}><i class="fa fa-shopping-cart mr-2"></i>Cart</a>
                         </li>
                     </ul>
                 </div>

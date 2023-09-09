@@ -3,12 +3,14 @@ import React, { Component } from 'react'
 export default class ModalDetail extends Component {
     renderModalBody = (item) => {
         let { name, image, price, description, shortDescription } = item
-        return <>
+        return <div className='position-relative'>
+            <div className="position-absolute">
+                <h5 className="modal-title" id="exampleModalLabel">{name}</h5>
+                <p className="text-success">$ {price}</p>
+            </div>
             <img src={image} alt="" className='w-100' />
-            <h5 className="modal-title" id="exampleModalLabel">{name}</h5>
-            <p className="text-success">$ {price}</p>
             <p>{description}</p>
-        </>
+        </div>
     }
     render() {
         return (
@@ -19,9 +21,8 @@ export default class ModalDetail extends Component {
                             {this.renderModalBody(this.props.viewingItem)}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button className="btn btn-dark" onClick={() => { this.props.handleAddToCart(this.props.viewingItem) }}>Add to cart</button>
-
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

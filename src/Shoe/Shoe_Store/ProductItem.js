@@ -9,9 +9,11 @@ export default class ProductItem extends Component {
                 <div onClick={() => { this.props.handleViewDetail(item) }} data-toggle="modal" data-target="#exampleModal">
                     <img src={image} alt="" className='w-100 bg-light' />
                     <p>{name}</p>
-                    <p className='font-weight-bold'>$ {price}</p>
                 </div>
-                <button className="btn btn-dark" onClick={() => { this.props.handleAddToCart(item) }}>Add to cart</button>
+                <div>
+                    <p className='font-weight-bold'>$ {price}</p>
+                    <button className="btn btn-dark" onClick={() => { this.props.handleAddToCart(item) }}>Add to cart</button>
+                </div>
             </div>
         )
     }
