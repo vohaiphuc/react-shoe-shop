@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import ShoeStore from './Shoe/Shoe_Store/ShoeStore';
+import ShoeStore from './Shoe/ShoeStore';
+import Header from './Shoe/Header';
 
 function App() {
   return (
-    <ShoeStore />
+    <>
+      <Header />
+      <ShoeStore />
+    </>
   );
 }
 

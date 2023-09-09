@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import ProductList from './ProductList'
 import ModalDetail from './ModalDetail'
 import ProductCart from './ProductCart'
-import { PAGE_HOME, shoeArr } from "./data";
-import Header from './Header';
+import { PAGE_HOME } from "./data";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types'
@@ -14,7 +13,6 @@ export class ShoeStore extends Component {
     render() {
         return (
             <>
-                <Header />
                 <div className='container mb-5'>
                     <div className="row">
                         {this.props.page == PAGE_HOME

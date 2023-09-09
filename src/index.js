@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import { rootReducer } from "./Shoe/Shoe_Store/reducer/rootReducer";
+import { rootReducer } from "./Shoe/reducer/rootReducer";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

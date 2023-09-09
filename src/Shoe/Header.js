@@ -5,6 +5,7 @@ import { PAGE_CART, PAGE_HOME } from './data'
 
 export class Header extends Component {
     setActivePageClass = (page) => {
+        console.log(this.props.activePage);
         return this.props.activePage == page ? "nav-item active" : "nav-item"
     }
     render() {
@@ -30,6 +31,7 @@ export class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("🚀 ~ file: Header.js:34 ~ mapStateToProps ~ state:", state)
     return {
         activePage: state.shoeReducer.page
     }
