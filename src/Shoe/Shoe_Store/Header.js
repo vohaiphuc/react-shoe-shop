@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { PAGE_CART, PAGE_HOME } from './data'
 
-export default class Header extends Component {
+export class Header extends Component {
     setActivePageClass = (page) => {
         return this.props.activePage == page ? "nav-item active" : "nav-item"
     }
@@ -15,10 +17,10 @@ export default class Header extends Component {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className={this.setActivePageClass(PAGE_HOME)} >
-                            <a className="nav-link" href="#" onClick={() => { this.props.changePage(PAGE_HOME) }}><i class="fa fa-home mr-2"></i>Home</a>
+                            <a className="nav-link" href="#" onClick={() => { this.props.handleChangePage(PAGE_HOME) }}><i class="fa fa-home mr-2"></i>Home</a>
                         </li>
                         <li className={this.setActivePageClass(PAGE_CART)} >
-                            <a className="nav-link" href="#" onClick={() => { this.props.changePage(PAGE_CART) }}><i class="fa fa-shopping-cart mr-2"></i>Cart</a>
+                            <a className="nav-link" href="#" onClick={() => { this.props.handleChangePage(PAGE_CART) }}><i class="fa fa-shopping-cart mr-2"></i>Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -26,3 +28,23 @@ export default class Header extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        activePage: state.shoeReducer.page
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChangePage: (page) => {
+            let action = {
+                type: "CHANGE_PAGE",
+                payload: page
+            }
+            dispatch(action)
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

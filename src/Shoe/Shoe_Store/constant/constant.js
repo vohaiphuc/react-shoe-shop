@@ -1,0 +1,7 @@
+export const CHANGE_PAGE = "CHANGE_PAGE"
+export const ADD_TO_CART = "ADD_TO_CART"
+export const REMOVE_ITEM = "REMOVE_ITEM"
+export const CHANGE_QUANTITY = "CHANGE_QUANTITY"
+export const VIEW_DETAIL = "VIEW_DETAIL"
+export const SHOW_MESSAGE_ADD = "Đã thêm vào giỏ hàng"
+export const SHOW_MESSAGE_DELETE = "Đã xóa khỏi giỏ hàng"

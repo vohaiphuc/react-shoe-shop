@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { ADD_TO_CART, VIEW_DETAIL } from './constant/constant'
 
-export default class ProductItem extends Component {
+export class ProductItem extends Component {
     render() {
         let item = this.props.item
         let { name, price, image } = item
@@ -18,3 +21,28 @@ export default class ProductItem extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        // list: state.shoeReducer.shoeArr
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleAddToCart: (shoe) => {
+            let action = {
+                type: ADD_TO_CART,
+                payload: shoe
+            }
+            dispatch(action)
+        },
+        handleViewDetail: (shoe) => {
+            let action = {
+                type: VIEW_DETAIL,
+                payload: shoe
+            }
+            dispatch(action)
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)

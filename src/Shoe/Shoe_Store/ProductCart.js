@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { CHANGE_QUANTITY, REMOVE_ITEM } from './constant/constant'
 
-export default class ProductCart extends Component {
+export class ProductCart extends Component {
     renderCart = () => {
         let { cart } = this.props
         if (cart.length < 1) return <tr>Giỏ hàng rỗng</tr>
@@ -56,3 +59,29 @@ export default class ProductCart extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return { cart: state.shoeReducer.cart }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChangeQuantity: (id, option) => {
+            let action = {
+                type: CHANGE_QUANTITY,
+                payload: { id, option }
+            }
+            dispatch(action)
+        },
+        handleRemove: (id) => {
+            let action = {
+                type: REMOVE_ITEM,
+                payload: id
+            }
+            dispatch(action)
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCart)
+

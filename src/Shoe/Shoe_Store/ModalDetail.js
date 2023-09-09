@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { ADD_TO_CART } from './constant/constant'
 
-export default class ModalDetail extends Component {
+export class ModalDetail extends Component {
     renderModalBody = (item) => {
         let { name, image, price, description, shortDescription } = item
         return <div className='position-relative'>
@@ -31,3 +34,21 @@ export default class ModalDetail extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return { viewingItem: state.shoeReducer.viewingItem }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleAddToCart: (shoe) => {
+            let action = {
+                type: ADD_TO_CART,
+                payload: shoe
+            }
+            dispatch(action)
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalDetail)

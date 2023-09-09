@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import ProductItem from './ProductItem'
 
-export default class ProductList extends Component {
+export class ProductList extends Component {
     renderListShoe = () => {
         return this.props.list.map((item, index) => {
             return <ProductItem item={item} key={index}
-                handleAddToCart={this.props.handleAddToCart}
-                handleViewDetail={this.props.handleViewDetail}
             />
         })
     }
@@ -18,3 +18,15 @@ export default class ProductList extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        list: state.shoeReducer.shoeArr
+    }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
