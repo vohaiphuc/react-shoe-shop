@@ -3,6 +3,7 @@ import ProductList from './ProductList'
 import ModalDetail from './ModalDetail'
 import ProductCart from './ProductCart'
 import { shoeArr } from "./data";
+import Header from './Header';
 
 export default class ShoeStore extends Component {
     state = {
@@ -63,19 +64,16 @@ export default class ShoeStore extends Component {
     render() {
         return (
             <>
-                <div className="col-12 my-5">
-                    <button className='btn btn-warning mr-5' onClick={() => { this.changePage("home") }}>List</button>
-                    <button className='btn btn-warning' onClick={() => { this.changePage("cart") }}>Cart</button>
-                    {/* <button type="button" className="btn btn-primary ml-5" data-toggle="modal" data-target="#exampleModal">
-                        Launch demo modal
-                    </button> */}
+                <Header changePage={this.changePage} />
+                <div className='container mb-5'>
+                    <div className="row">
+                        {this.state.page == "home"
+                            ? <ProductList list={shoeArr} handleAddToCart={this.handleAddToCart} handleViewDetail={this.handleViewDetail} />
+                            : <ProductCart cart={this.state.cart} handleChangeQuantity={this.handleChangeQuantity} handleRemove={this.handleRemove} />
+                        }
+                    </div>
                 </div>
-
                 <ModalDetail viewingItem={this.state.viewingItem} handleAddToCart={this.handleAddToCart} />
-                {this.state.page == "home"
-                    ? <ProductList list={shoeArr} handleAddToCart={this.handleAddToCart} handleViewDetail={this.handleViewDetail} />
-                    : <ProductCart cart={this.state.cart} handleChangeQuantity={this.handleChangeQuantity} handleRemove={this.handleRemove} />
-                }
             </>
         )
     }
